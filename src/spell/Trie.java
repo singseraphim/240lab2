@@ -17,6 +17,10 @@ public class Trie implements ITrie {
 	public int nodeCount = 1;
 	public int modCounter = 0;
 	public StringBuilder wordList = new StringBuilder();
+	
+	public Trie() {
+		
+	}
 
 	public void add(String word) {
 		rootNode.addToTrie( word);
@@ -87,6 +91,28 @@ public class Trie implements ITrie {
 					}
 					else {
 						return false;
+					}
+				}
+			}
+		}
+		public Node nodeIsInTrie(String word) { 
+			if (word.equals("")) {
+				return null;
+			}
+			char c = word.charAt(0);
+			if (nodeArray[c - 'a'] == null) {
+				return null;
+			}
+			else {
+				if (word.length() > 1) {
+					return nodeArray[c - 'a'].nodeIsInTrie(word.substring(1));
+				}
+				else {
+					if (nodeArray[c - 'a'].getValue() > 0) {
+					return nodeArray[c - 'a'];
+					}
+					else {
+						return null;
 					}
 				}
 			}
@@ -392,20 +418,11 @@ public class Trie implements ITrie {
 	/**
 	 * Your trie node class should implement the ITrie.INode interface
 	 */
-	public interface INode {
-	
-		/**
-		 * Returns the freq uency count for the word represented by the node
-		 * 
-		 * @return The frequency count for the word represented by the node
-		 */
-		public int getValue();
-	}
 
 	@Override
 	public ITrie.INode find(String word) {
-		// TODO Auto-generated method stub
-		return null;
+		Node returnNode = rootNode.nodeIsInTrie(word);
+		return returnNode;
 	}
 	
 }

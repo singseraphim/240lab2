@@ -13,7 +13,7 @@ public class SpellChecker implements ISpellCorrector{
 	 */
 	
 	public Trie myTrie = new Trie();
-	SpellChecker() {
+	public SpellChecker() {
 		
 	}
 	public void useDictionary(String dictionaryFileName) throws IOException {
