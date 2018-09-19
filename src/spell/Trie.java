@@ -415,11 +415,14 @@ public class Trie implements ITrie {
 		if (o == null) {
 			return false;
 		}
+		if (!(o instanceof Trie)) {
+			return false;
+		}
 		else {
 			Trie compareTrie = (Trie) o;
 		
 		//System.out.println("testing " + toString() + " and " + o.toString());
-		return rootNode.compare(compareTrie.rootNode);
+			return rootNode.compare(compareTrie.rootNode);
 		}
 		
 	}
