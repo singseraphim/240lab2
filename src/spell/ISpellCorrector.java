@@ -1,7 +1,7 @@
 package spell;
 import java.io.IOException;
 
-public interface iSpellCorrector {
+public interface ISpellCorrector {
 
 	/**
 	 * Tells this <code>SpellCorrector</code> to use the given file as its dictionary

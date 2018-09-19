@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class SpellChecker implements iSpellCorrector{
+public class SpellChecker implements ISpellCorrector{
 
 	/**
 	 * Tells this <code>SpellCorrector</code> to use the given file as its dictionary
