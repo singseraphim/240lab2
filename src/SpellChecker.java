@@ -12,34 +12,19 @@ public class SpellChecker implements iSpellCorrector{
 	 * @throws IOException If the file cannot be read
 	 */
 	public Trie myTrie = new Trie();
-	public Trie othertrie = new Trie();
-
 	SpellChecker() {
 		
 	}
 	public void useDictionary(String dictionaryFileName) throws IOException {
 		Scanner sc = new Scanner(new File(dictionaryFileName));
 
-		/*while (sc.hasNext()) {
+		while (sc.hasNext()) {
 			String currentWord = sc.next();
 			currentWord = currentWord.toLowerCase();
 			
 			myTrie.add(currentWord);
-		}*/
-		//myTrie.print();
-		/*for (int i = 0; i < 100; ++i) {
-			String currentWord = sc.next();
-			currentWord = currentWord.toLowerCase();
-			
-			myTrie.add(currentWord);
-			othertrie.add(currentWord);
-		}*/
-		myTrie.add("of");
-		myTrie.add("of");
-		myTrie.add("of");
-		myTrie.add("of");
-		othertrie.add("of"); //hmmmm
-
+		}
+		
 		sc.close();
 	}
 
@@ -51,7 +36,6 @@ public class SpellChecker implements iSpellCorrector{
 	 */
 	public String suggestSimilarWord(String inputWord) {
 		String s = myTrie.checkWord(inputWord);  
-		System.out.println(myTrie.equals(othertrie));
 		return s;
 		
 	}

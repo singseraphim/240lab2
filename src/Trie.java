@@ -130,50 +130,38 @@ public class Trie implements ITrie {
 			}
 			return;
 		}
-		public boolean compare(Node compareNode) { 
-			if (count != compareNode.count) { //if the counts are different
+		public boolean compare(Node compareNode) {  //it's returning true if any of the words are true D: //PROBABLY A FOR LOOP THINGGG
+			boolean sameArray = true;
+			boolean hasDiffArrays = false;
+			//System.out.println("nodecount: " + count  + " comparecount: " + compareNode.count); 
+			if (count != compareNode.count) {
 				return false;
 			}
-			boolean isEndOfPath = true;
 			for (int i = 0; i < nodeArray.length; ++i) {
-				if (nodeArray[i] != null) {
-					isEndOfPath = false;
-					if (compareNode.nodeArray[i] == null) { //if current has a node and compare doesn't
-						return false;
-					}
+				if (nodeArray[i] == null && compareNode.nodeArray[i] != null) {//if comparenodearray has something and nodearray doesn't
+					return false;
 				}
-				if (compareNode.nodeArray[i] != null) { //if compare has a node and current doesn't
-					isEndOfPath = false;
-					if (nodeArray[i] == null) {
-						return false;
-					}
-					else {//if they both have a node in that spot
-						System.out.println("testing if " + nodeArray[i].count + " and " + compareNode.nodeArray[i].count + " are different");
-						if (nodeArray[i].count == compareNode.nodeArray[i].count) {
-							System.out.println(nodeArray[i].count + " and " + compareNode.nodeArray[i].count + " are the same");
-							nodeArray[i].compare(compareNode.nodeArray[i]);
-						}
-						else {
-							return false;
-						}
+				else if (compareNode.nodeArray[i] == null && nodeArray[i] != null) {//if nodearray has something and comparenodearray doesn't
+					return false;
+				}
+				else {
+					//System.out.println("arrays at " + toChar(i) + " are the same");
+				}
+				if (compareNode.nodeArray[i] != null && nodeArray[i] != null) {//if they both have something
+					//System.out.println("visiting " + toChar(i));
+					sameArray = nodeArray[i].compare(compareNode.nodeArray[i]);
+					if (sameArray == false) {
+						hasDiffArrays = true;
 					}
 				}
 			}
-			if (isEndOfPath) {
+			if (hasDiffArrays) {
+				return false;
+			}
+			else {
 				return true;
 			}
-			
-			return true;
 		}
-		/*Look at current node and compare node
-		 * if counts are different, return false
-		 * iterate through the arrays
-		 * 		if there's a node in one and not the other, return false
-		 * 		if there's a node in both, call one with the comparenode one as a parameter
-		 * 
-		 * 
-		 * 
-		 */
 	}
 	
 	public void checkWordCount(String word) {
@@ -393,15 +381,10 @@ public class Trie implements ITrie {
 	@Override
 	public boolean equals(Object o) {
 		Trie compareTrie = (Trie) o;
+		//System.out.println("testing " + toString() + " and " + o.toString());
 		return rootNode.compare(compareTrie.rootNode);
 		
 	}
-	
-	/*How to write a recursive compare function? 
-	 * 
-	 * 
-	 * 
-	 */
 
 	/**
 	 * Your trie node class should implement the ITrie.INode interface
