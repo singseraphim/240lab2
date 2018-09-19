@@ -13,6 +13,7 @@ public class SpellChecker implements ISpellCorrector{
 	 */
 	
 	public Trie myTrie = new Trie();
+	//public Trie otherTrie = new Trie();
 	public SpellChecker() {
 		
 	}
@@ -24,8 +25,10 @@ public class SpellChecker implements ISpellCorrector{
 			currentWord = currentWord.toLowerCase();
 			
 			myTrie.add(currentWord);
+			//otherTrie.add(currentWord);
 		}
 		
+		//otherTrie.rootNode = null;
 		sc.close();
 	}
 
@@ -37,6 +40,8 @@ public class SpellChecker implements ISpellCorrector{
 	 */
 	public String suggestSimilarWord(String inputWord) {
 		String s = myTrie.checkWord(inputWord);  
+		//System.out.println(myTrie.toString());
+		//System.out.println(myTrie.equals(otherTrie));
 		return s;
 		
 	}

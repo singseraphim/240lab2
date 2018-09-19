@@ -162,6 +162,9 @@ public class Trie implements ITrie {
 		public boolean compare(Node compareNode) {  //it's returning true if any of the words are true D: //PROBABLY A FOR LOOP THINGGG
 			boolean sameArray = true;
 			boolean hasDiffArrays = false;
+			if (compareNode == null) {
+				return false;
+			}
 			//System.out.println("nodecount: " + count  + " comparecount: " + compareNode.count); 
 			if (count != compareNode.count) {
 				return false;
@@ -409,9 +412,15 @@ public class Trie implements ITrie {
 	
 	@Override
 	public boolean equals(Object o) {
-		Trie compareTrie = (Trie) o;
+		if (o == null) {
+			return false;
+		}
+		else {
+			Trie compareTrie = (Trie) o;
+		
 		//System.out.println("testing " + toString() + " and " + o.toString());
 		return rootNode.compare(compareTrie.rootNode);
+		}
 		
 	}
 
