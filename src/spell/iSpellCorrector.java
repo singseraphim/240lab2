@@ -1,4 +1,4 @@
-
+package spell;
 import java.io.IOException;
 
 public interface iSpellCorrector {

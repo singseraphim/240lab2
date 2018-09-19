@@ -1,4 +1,4 @@
-
+package spell;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,6 +11,7 @@ public class SpellChecker implements iSpellCorrector{
 	 * @param dictionaryFileName File containing the words to be used
 	 * @throws IOException If the file cannot be read
 	 */
+	
 	public Trie myTrie = new Trie();
 	SpellChecker() {
 		
@@ -39,5 +40,9 @@ public class SpellChecker implements iSpellCorrector{
 		return s;
 		
 	}
+	/*My worst fear is that it doesn't return the correct word. 
+	 * 
+	 * 
+	 */
 
 }
