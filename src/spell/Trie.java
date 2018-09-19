@@ -323,7 +323,7 @@ public class Trie implements ITrie {
 				bestWord = new String(current);
 			}
 			else if (rootNode.getWordCount(current) == rootNode.getWordCount(bestWord)) { //if the two words have the same frequency
-				if (current.charAt(0) < bestWord.charAt(0)) { //chooses the first alphabetically
+				if (current.compareTo(bestWord) < 0) { //if current is first alphabetically
 					bestWord = new String(current);
 				}
 			}
